@@ -1,0 +1,17 @@
+.container {
+    background-color: beige;
+    padding-top: 2em;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent !important;
+}
+
+.jumbotron>.container {
+    width: 100px;
+}
+
+.display-4 {
+    background-color: white;
+}
