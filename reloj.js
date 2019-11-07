@@ -4,7 +4,8 @@ $(function() {
     inputHours = document.getElementById('hours');
     inputMinutes = document.getElementById('minutes');
     btnSendInformation = document.getElementById('btn_send_information')
-        //bind events
+
+    //bind events
     inputHours.addEventListener('keyup', ValidateHours);
     inputHours.addEventListener('keypress', ValidateNumber);
 
@@ -41,27 +42,51 @@ var GetAngle = function(e) {
     e.preventDefault();
     var horas = inputHours.value;
     var minutos = inputMinutes.value;
-    var angulo = CalcAngle(horas, minutos);
-    console.log({
-        horas: horas,
-        minutos: minutos,
-        Angulo: angulo
-    });
+    if (horas.length === 0 || minutos.length === 0) {
+        alert('Faltan Datos!!');
+    } else {
+        var angulo = CalcAngle(horas, minutos);
+        if (isNaN(angulo)) {
+            alert('los valores no son números!!!');
+            return;
+        }
+        var infoDegree = document.getElementById('degree_text');
+        infoDegree.innerHTML = angulo;
+        console.log({
+            horas: horas,
+            minutos: minutos,
+            Angulo: angulo
+        });
+    }
+
 };
 
 function CalcAngle(hours, minutes) {
-    //1 hora posee 30 grados
+    /*
+    1 hora posee 30 grados => 360/12
+    despues de 1 min, la manecilla se ha movido 0.5 grados
+    30/60 => 0,5 grados
+    */
     var hour = 30;
-    //1 min tiene 6 grados
+
+
+    /*
+    Para la manecilla del minutero, 1 min tiene 6 grados
+    */
     var min = 6;
+
+    /*
+    consideremos cuanto se ha desplazado la manecilla de la hora despues que el 
+    minutero empieza a moverse
+    */
 
     hours = hours > 12 ? parseInt(hours) - 12 : hours;
 
-    var degreeHours = parseInt(hours) * hour;
+    var degreeHours = (parseInt(hours) * hour) + (0.5 * minutes);
     var degreeMinutes = parseInt(minutes) * min;
 
     if (hours > 0) {
-        return (degreeMinutes - degreeHours);
+        return Math.abs((degreeMinutes - degreeHours));
     }
 
     return degreeMinutes;
