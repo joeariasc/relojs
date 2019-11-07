@@ -1,4 +1,5 @@
 .container {
+    width: 50% !important;
     background-color: beige;
     padding-top: 2em;
 }

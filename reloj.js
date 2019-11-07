@@ -1,5 +1,7 @@
-$(function() {
-    console.log('Documento Cargado correctamente');
+//Verificando si el documento se ha cargado correctamente
+//reemplaza -> $(function(){}); de JQuery
+docReady(function() {
+    //console.log('Documento Cargado correctamente');
     //elements
     inputHours = document.getElementById('hours');
     inputMinutes = document.getElementById('minutes');
@@ -16,6 +18,17 @@ $(function() {
 
 
 });
+
+//funcion que se llama al inicializar el documento para verificar si esta totalmente cargado
+function docReady(fn) {
+    // see if DOM is already available
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        // call on next available tick
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
+    }
+}
 
 var ValidateHours = function() {
     var hours = this.value;
@@ -52,11 +65,11 @@ var GetAngle = function(e) {
         }
         var infoDegree = document.getElementById('degree_text');
         infoDegree.innerHTML = angulo;
-        console.log({
-            horas: horas,
-            minutos: minutos,
-            Angulo: angulo
-        });
+        // console.log({
+        //     horas: horas,
+        //     minutos: minutos,
+        //     Angulo: angulo
+        // });
     }
 
 };
