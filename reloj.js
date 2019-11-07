@@ -63,6 +63,7 @@ var GetAngle = function(e) {
 
 function CalcAngle(hours, minutes) {
     /*
+    Para la manecilla del horario
     1 hora posee 30 grados => 360/12
     despues de 1 min, la manecilla se ha movido 0.5 grados
     30/60 => 0,5 grados
