@@ -1,7 +1,7 @@
-//Verificando si el documento se ha cargado correctamente
-//reemplaza -> $(function(){}); de JQuery
+//Verifying if the document has been loaded correctly
+//replace -> $(function(){}) JQuery
 docReady(function() {
-    //console.log('Documento Cargado correctamente');
+    //console.log('Loading!');
     //elements
     inputHours = document.getElementById('hours');
     inputMinutes = document.getElementById('minutes');
@@ -19,7 +19,7 @@ docReady(function() {
 
 });
 
-//funcion que se llama al inicializar el documento para verificar si esta totalmente cargado
+//function that is called when initializing the document to verify if it is fully loaded
 function docReady(fn) {
     // see if DOM is already available
     if (document.readyState === "complete" || document.readyState === "interactive") {
@@ -56,11 +56,15 @@ var GetAngle = function(e) {
     var horas = inputHours.value;
     var minutos = inputMinutes.value;
     if (horas.length === 0 || minutos.length === 0) {
-        alert('Faltan Datos!!');
+        alert('Missing data!!');
     } else {
+        if (isNaN(horas) || isNaN(minutos)) {
+            alert('Some values are not numbers!!!');
+            return;
+        }
         var angulo = CalcAngle(horas, minutos);
         if (isNaN(angulo)) {
-            alert('los valores no son números!!!');
+            alert('Some values are not numbers!!!');
             return;
         }
         var infoDegree = document.getElementById('degree_text');
@@ -76,22 +80,21 @@ var GetAngle = function(e) {
 
 function CalcAngle(hours, minutes) {
     /*
-    Para la manecilla del horario
-    1 hora posee 30 grados => 360/12
-    despues de 1 min, la manecilla se ha movido 0.5 grados
-    30/60 => 0,5 grados
+    Hour hand
+    1 hour has 30 degrees => 360/12
+    after 1 min, the hand has move 0.5 degrees
+    30/60 => 0,5 degrees
     */
     var hour = 30;
 
 
     /*
-    Para la manecilla del minutero, 1 min tiene 6 grados
+    Minute hand, 1 min has 6 degrees
     */
     var min = 6;
 
     /*
-    consideremos cuanto se ha desplazado la manecilla de la hora despues que el 
-    minutero empieza a moverse
+    Consider how much the hour hand has moved after the minute hand starts moving
     */
 
     hours = hours > 12 ? parseInt(hours) - 12 : hours;
