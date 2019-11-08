@@ -1,7 +1,19 @@
+html,
+body {
+    height: 100%;
+}
+
 .container {
     width: 50% !important;
     background-color: beige;
     padding-top: 2em;
+}
+
+.center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .jumbotron {
