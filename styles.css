@@ -1,15 +1,17 @@
-html,
-body {
+html {
     height: 100%;
 }
 
-.container {
-    width: 50% !important;
-    background-color: beige;
-    padding-top: 2em;
+body {
+    background-color: #f1ecec;
 }
 
 .center {
+    padding-top: 2em;
+    width: 45% !important;
+    box-shadow: 1px 1px 12px 1px #b2b2b2;
+    border-radius: 5px;
+    background-color: white;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -17,8 +19,16 @@ body {
 }
 
 .jumbotron {
+    padding: 20px 0 20px 0;
     text-align: center;
-    background-color: transparent !important;
+    background-color: beige !important;
+}
+
+.info-text {
+    color: #a7a7a7;
+    font-weight: 300;
+    position: relative;
+    margin-bottom: 20px;
 }
 
 .jumbotron>.container {
@@ -26,5 +36,6 @@ body {
 }
 
 .display-4 {
+    color: #a7a7a7;
     background-color: white;
 }

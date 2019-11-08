@@ -68,7 +68,7 @@ var GetAngle = function(e) {
             return;
         }
         var infoDegree = document.getElementById('degree_text');
-        infoDegree.innerHTML = angulo;
+        infoDegree.innerHTML = angulo + 'º';
         // console.log({
         //     horas: horas,
         //     minutos: minutos,
